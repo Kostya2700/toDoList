@@ -7,13 +7,12 @@ import { AppBar } from "./AppBar/AppBar";
 
 export const App = () => {
   const tasks = useSelector(getTasks);
-
   return (
     <Layout>
       <AppBar />
       <TaskForm />
 
-      {tasks.length ? <TaskList /> : <p>Please write you ToDo</p>}
+      {tasks.tasks.length ? <TaskList /> : <p>Please write you ToDo</p>}
     </Layout>
   );
 };

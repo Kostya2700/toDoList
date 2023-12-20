@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const tasksInitialState = [];
+const tasksInitialState = {
+  tasks: [],
+  filteredTasks: [],
+};
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -8,23 +11,27 @@ const tasksSlice = createSlice({
   reducers: {
     addTask: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.tasks.push(action.payload);
       },
     },
     deleteTask(state, action) {
-      const index = state.findIndex((task) => task.id === action.payload);
-      state.splice(index, 1);
+      const index = state.tasks.findIndex((task) => task.id === action.payload);
+      state.tasks.splice(index, 1);
     },
     toggleCompleted(state, action) {
-      for (const task of state) {
-        if (task.id === action.payload) {
-          task.completed = !task.completed;
-          break;
-        }
+      const task = state.tasks.find((task) => task.id === action.payload);
+      if (task) {
+        task.completed = !task.completed;
       }
+    },
+    filterAlphabetically(state) {
+      state.filteredTasks = state.tasks.slice().sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
     },
   },
 });
 
-export const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
+export const { addTask, deleteTask, toggleCompleted, filterAlphabetically } =
+  tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;

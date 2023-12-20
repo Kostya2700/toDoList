@@ -6,6 +6,7 @@ import { CiEdit } from "react-icons/ci";
 
 export const Task = ({ task, counter, toggleModal }) => {
   const dispatch = useDispatch();
+  console.log("d", dispatch);
   const handleDelete = () => dispatch(deleteTask(task.id));
 
   return (

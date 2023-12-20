@@ -4,7 +4,7 @@ export const AppBar = () => {
   return (
     <header className={css.wrapper}>
       <section className={css.section}>
-        <h2 className={css.title}>Tasks</h2>
+        <h2 className={css.title}>ToDoList</h2>
       </section>
       <section className={css.section}>
         <h2 className={css.title}>Filter</h2>
