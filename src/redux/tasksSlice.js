@@ -9,14 +9,11 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState: tasksInitialState,
   reducers: {
-    addTask: {
-      reducer(state, action) {
-        state.tasks.push(action.payload);
-      },
+    addTask(state, action) {
+      state.tasks.push(action.payload);
     },
     deleteTask(state, action) {
-      const index = state.tasks.findIndex((task) => task.id === action.payload);
-      state.tasks.splice(index, 1);
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
     toggleCompleted(state, action) {
       const task = state.tasks.find((task) => task.id === action.payload);
@@ -25,13 +22,26 @@ const tasksSlice = createSlice({
       }
     },
     filterAlphabetically(state) {
-      state.filteredTasks = state.tasks.slice().sort((a, b) => {
+      state.filteredTasks = [...state.tasks].sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
+    },
+    updateTask(state, action) {
+      const { id, title, description } = action.payload;
+      const taskToUpdate = state.tasks.find((task) => task.id === id);
+      if (taskToUpdate) {
+        taskToUpdate.title = title;
+        taskToUpdate.description = description;
+      }
     },
   },
 });
 
-export const { addTask, deleteTask, toggleCompleted, filterAlphabetically } =
-  tasksSlice.actions;
+export const {
+  addTask,
+  deleteTask,
+  toggleCompleted,
+  filterAlphabetically,
+  updateTask,
+} = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;

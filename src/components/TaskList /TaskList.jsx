@@ -28,7 +28,7 @@ export const TaskList = () => {
 
   return (
     <>
-      <button onClick={sortByAlphabet}>
+      <button className={css.sortButton} onClick={sortByAlphabet}>
         {isSorted ? "Sort Default" : "Sort Alphabetically"}
       </button>
       <ul className={css.list}>
