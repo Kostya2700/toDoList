@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import css from "./Task.module.css";
 import { deleteTask } from "../../redux/tasksSlice";
 import { MdClose } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
 
 export const Task = ({ task, counter, toggleModal }) => {
   const dispatch = useDispatch();
@@ -15,13 +16,10 @@ export const Task = ({ task, counter, toggleModal }) => {
           <p className={css.text}>{task.title}</p>
           <p className={css.text}>{task.description}</p>
         </div>
-        <input
-          type="checkbox"
-          className={css.checkbox}
-          checked={task.completed}
-        />
-
-        <button className={css.btn} onClick={handleDelete}>
+        <button className={css.btnedit}>
+          <CiEdit size={24} />
+        </button>
+        <button className={css.btndelete} onClick={handleDelete}>
           <MdClose size={24} />
         </button>
       </div>

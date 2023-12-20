@@ -13,7 +13,7 @@
   /* text-align: center; */
 }
 
-.btn {
+.btndelete {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +27,20 @@
   cursor: pointer;
   color: #f44336;
 }
+.btnedit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  color: black;
+}
 
 .btn:hover {
   background-color: #e2e5e8;
@@ -36,11 +50,6 @@
   background-color: #bdbdbd;
 }
 
-.checkbox {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
 .modalMain {
   display: flex;
   align-items: center;
@@ -58,4 +67,10 @@
 .modalBtn {
   display: grid;
   justify-items: center;
+}
+.delete {
+  color: #f44336;
+}
+.edit {
+  color: black;
 }
